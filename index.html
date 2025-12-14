@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Real Estate Property Finder</title>
+
+    <!-- CSS File -->
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo-title">
+    <img src="download (1).png" alt="Logo">
+    <h1>Real Estate Property Finder</h1>
+</div>
+
+        <nav>
+            <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="listings.html">Property Listings</a></li>
+            
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="agent.html">Agent</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="loginRegister.html">
+                Login/Register  
+            </a></li>
+            </ul>
+
+            </ul>
+        </nav>
+    </header>
+
+  <!-- Advanced Search Bar -->
+<div class="search-bar">
+    <input type="text" placeholder="Enter location..." id="location">
+
+    <select id="propertyType">
+        <option value="">Property Type</option>
+        <option value="house">House</option>
+        <option value="apartment">Apartment</option>
+        <option value="land">Land</option>
+    </select>
+
+    <input type="number" placeholder="Min Price (₹)" id="minPrice">
+    <input type="number" placeholder="Max Price (₹)" id="maxPrice">
+
+    <button type="submit" id="searchBtn">Search</button>
+</div>
+
+    <!-- Main Content -->
+    <main>
+      <section class="hero">
+    <h2>Find Your Dream Property Today!</h2>
+    <p>Browse through our extensive listings of properties for sale and rent.</p>
+    <img src="banner.avif" alt="Real Estate Hero Image">
+    <a href="listings.html" class="btn">View Listings</a>
+</section>
+    </main>
+
+<!---featured properties-->
+   <section class="featured-properties">
+    <h2>Featured Properties</h2>
+    <div class="property-cards">
+        <div class="property-card">
+            <img src="images (1).jpeg" alt="Modern Apartment in City Center">
+            <h3>Modern Apartment in City Center</h3>
+            <p>2 Beds • 2 Baths • ₹50,00,000</p>
+            <a href="listings.html" class="btn">View Details</a>
+        </div>
+
+        <div class="property-card">
+            <img src="download.jpeg" alt="Spacious Family House">
+            <h3>Spacious Family House</h3>
+            <p>4 Beds • 3 Baths • ₹1,20,00,000</p>
+            <a href="listings.html" class="btn">View Details</a>
+        </div>
+
+        <div class="property-card">
+            <img src="villa.jpeg" alt="Luxury Villa with Pool">
+            <h3>Luxury Villa with Pool</h3>
+            <p>5 Beds • 4 Baths • ₹2,50,00,000</p>
+            <a href="listings.html" class="btn">View Details</a>
+        </div>
+    </div>
+</section>
+
+<section class="property-categories">
+    <h2>Property Types</h2>
+    <div class="categories">
+
+        <!-- Houses -->
+        <div class="category-card">
+            <img src="house.jpeg" alt="Houses">
+            <h3>Houses</h3>
+            <a href="listings.html?type=house" class="btn">Explore Houses</a>
+        </div>
+
+        <!-- Apartments -->
+        <div class="category-card">
+            <img src="Explore Apartments.jpeg" alt="Apartments">
+            <h3>Apartments</h3>
+            <a href="listings.html?type=apartment" class="btn">Explore Apartments</a>
+        </div>
+
+        <!-- Land / Plots -->
+        <div class="category-card">
+            <img src="Explore Land.jpeg" alt="Plots / Land">
+            <h3>Plots / Land</h3>
+            <a href="listings.html?type=land" class="btn">Explore Land</a>
+        </div>
+
+        <!-- Villas -->
+        <div class="category-card">
+            <img src="villa.jpeg" alt="Villas">
+            <h3>Villas</h3>
+            <a href="listings.html?type=villa" class="btn">Explore Villas</a>
+        </div>
+
+        <!-- Commercial -->
+        <div class="category-card">
+            <img src="Explore Commercial.jpeg" alt="Commercial">
+            <h3>Commercial</h3>
+            <a href="listings.html?type=commercial" class="btn">Explore Commercial</a>
+        </div>
+
+        <!-- Buy -->
+        <div class="category-card">
+            <img src="Explore Buy.jpeg" alt="Buy">
+            <h3>Buy</h3>
+            <a href="listings.html?purpose=buy" class="btn">Explore Buy</a>
+        </div>
+
+        <!-- Rent -->
+        <div class="category-card">
+            <img src="Explore Rent.jpeg" alt="Rent">
+            <h3>Rent</h3>
+            <a href="listings.html?purpose=rent" class="btn">Explore Rent</a>
+        </div>
+
+        <!-- Residential -->
+        <div class="category-card">
+            <img src="Explore Residential.jpg" alt="Residential">
+            <h3>Residential</h3>
+            <a href="listings.html?type=residential" class="btn">Explore Residential</a>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- Property Details Modal -->
+<div id="propertyModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+
+    <img id="modalImage" src="" alt="">
+    <h2 id="modalTitle"></h2>
+    <p id="modalInfo"></p>
+    <p id="modalPrice"></p>
+
+    <h3>Similar Properties</h3>
+    <div class="related-properties" id="relatedProperties"></div>
+  </div>
+</div>
+
+<!--why choose us-->
+<section class="why-choose-us"> 
+    <h2>Why Choose Us?</h2>
+    <div class="reasons">
+        <div class="reason">
+            <h3>Extensive Listings</h3>
+            <p>Access a wide range of properties to find the perfect match for your needs.</p>
+        </div>
+        <div class="reason">
+            <h3>Expert Agents</h3>
+            <p>Work with experienced real estate agents who understand the market.</p>
+        </div>
+        <div class="reason">
+            <h3>Customer Satisfaction</h3>
+            <p>We prioritize our clients' satisfaction and strive to exceed their expectations.</p>
+        </div>
+    </div>
+</section>
+
+
+<!--testimonials-->
+<section class="testimonials">
+    <h2>What Our Clients Say</h2>
+    <div class="testimonial-cards">
+        <div class="testimonial-card">
+            <img src="priya.jpeg" alt="User Icon" class="user-icon">
+            <p>"The team at Real Estate Property Finder helped me find my dream home quickly and easily. Highly recommend!"</p>
+            <h4>- Priya S.</h4>
+        </div>
+        <div class="testimonial-card">
+            <img src="men2.jpeg" alt="User Icon" class="user-icon">
+            <p>"Excellent service and knowledgeable agents. They made the buying process smooth and stress-free."</p>
+            <h4>- Rahul K.</h4>
+        </div>
+        <div class="testimonial-card">
+            <img src="men1.jpeg" alt="User Icon" class="user-icon">
+            <p>"A fantastic platform with a wide variety of listings. I found the perfect apartment for my family."</p>
+            <h4>- Anjali M.</h4>
+        </div>
+    </div>
+
+</section>
+
+
+
+  <!--property management-->
+   <div class="app">
+    <aside class="sidebar">
+      <div>
+        <div class="logo">Admin</div>
+        <nav class="menu">
+          <a class="active"><i class="fa fa-home"></i>Dashboard</a>
+          <a><i class="fa fa-users"></i>Leads</a>
+          <a><i class="fa fa-building"></i>Properties</a>
+          <a><i class="fa fa-credit-card"></i>Transaction</a>
+          <a><i class="fa fa-comments"></i>Chat</a>
+          <a><i class="fa fa-gear"></i>Setting</a>
+        </nav>
+      </div>
+      <button class="logout">Logout</button>
+    </aside>
+
+    <main class="main">
+      <div class="topbar">
+        <input class="search" placeholder="Search" />
+        <div class="profile">
+          <i class="fa fa-bell"></i>
+          <img src="https://i.pravatar.cc/100" />
+          <b>Muskan</b>
+        </div>
+      </div>
+
+      <h2>Dashboard</h2>
+      <p style="color:#777;margin-bottom:20px">Welcome back! Here's what's happening today.</p>
+
+      <section class="cards">
+        <div class="card">
+          <h3>Active Properties</h3>
+          <h1>124.00</h1>
+          <span class="up">+50% This month</span>
+        </div>
+        <div class="card">
+          <h3>New Leads</h3>
+          <h1>1,242</h1>
+          <span class="up">+15% This month</span>
+        </div>
+        <div class="card">
+          <h3>Total Sales</h3>
+          <h1>$720.00</h1>
+          <span class="down">-10% This month</span>
+        </div>
+      </section>
+
+      <section class="grid">
+        <div class="box">
+          <h3>Best Apartments</h3>
+          <h2>Sunset Valley Apartments</h2>
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c" />
+        </div>
+
+        <div class="box">
+          <h3>Messages</h3>
+          <div class="msg"><img src="https://i.pravatar.cc/101" /><div><b>Xavier</b><br><small>I need luxury property</small></div></div>
+          <div class="msg"><img src="https://i.pravatar.cc/102" /><div><b>Daniel</b><br><small>Thank you so much</small></div></div>
+          <div class="msg"><img src="https://i.pravatar.cc/103" /><div><b>Mia Sullivan</b><br><small>Modern family house</small></div></div>
+        </div>
+      </section>
+
+      <section class="box" style="margin-top:20px">
+        <h3>Building Condition</h3>
+        <p>On repairment progress 45%</p>
+        <div class="progress"><span style="width:45%"></span></div>
+        <p>On repairment progress 25%</p>
+        <div class="progress"><span style="width:25%"></span></div>
+        <p>On repairment progress 75%</p>
+        <div class="progress"><span style="width:75%"></span></div>
+            
+      <!-- Property Management -->
+      <section class="box" style="margin-top:25px">
+        <h2>Property Management</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:20px">
+          
+          <!-- Property Card -->
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994" style="width:100%;border-radius:15px;margin-bottom:15px" />
+            <h3>Luxury Villa</h3>
+            <p><b>Price:</b> $450,000</p>
+            <p><b>Location:</b> New York</p>
+            <p><b>Property Type:</b> Villa</p>
+            <p><b>Area:</b> 3200 sq ft</p>
+            <p><b>Bedrooms:</b> 4 | <b>Bathrooms:</b> 3</p>
+            <p><b>Status:</b> <span style="color:green">Available</span></p>
+            <p style="color:#666;font-size:14px">Beautiful luxury villa with modern design, parking, garden and swimming pool.</p>
+            <button style="margin-top:10px;padding:10px;width:100%;border:none;border-radius:10px;background:#000;color:#fff;cursor:pointer">Contact Agent</button>
+          </div>
+
+          <!-- Property Card -->
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be" style="width:100%;border-radius:15px;margin-bottom:15px" />
+            <h3>Modern Apartment</h3>
+            <p><b>Price:</b> $220,000</p>
+            <p><b>Location:</b> California</p>
+            <p><b>Property Type:</b> Apartment</p>
+            <p><b>Area:</b> 1400 sq ft</p>
+            <p><b>Bedrooms:</b> 2 | <b>Bathrooms:</b> 2</p>
+            <p><b>Status:</b> <span style="color:orange">On Rent</span></p>
+            <p style="color:#666;font-size:14px">Modern apartment near city center with balcony and security.</p>
+            <button style="margin-top:10px;padding:10px;width:100%;border:none;border-radius:10px;background:#000;color:#fff;cursor:pointer">Contact Agent</button>
+          </div>
+
+        
+          <!-- Property Card -->
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c" style="width:100%;border-radius:15px;margin-bottom:15px" />
+            <h3>Family House</h3>
+            <p><b>Price:</b> $310,000</p>
+            <p><b>Location:</b> Texas</p>
+            <p><b>Property Type:</b> Independent House</p>
+            <p><b>Area:</b> 2100 sq ft</p>
+            <p><b>Bedrooms:</b> 3 | <b>Bathrooms:</b> 2</p>
+            <p><b>Status:</b> <span style="color:green">Available</span></p>
+            <p style="color:#666;font-size:14px">Perfect family home with backyard, garage and peaceful neighborhood.</p>
+            <button style="margin-top:10px;padding:10px;width:100%;border:none;border-radius:10px;background:#000;color:#fff;cursor:pointer">Contact Agent</button>
+          </div>
+
+          <!-- Property Card -->
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1599423300746-b62533397364" style="width:100%;border-radius:15px;margin-bottom:15px" />
+            <h3>Commercial Office</h3>
+            <p><b>Price:</b> $600,000</p>
+            <p><b>Location:</b> Chicago</p>
+            <p><b>Property Type:</b> Commercial</p>
+            <p><b>Area:</b> 5000 sq ft</p>
+            <p><b>Bedrooms:</b> NA | <b>Bathrooms:</b> 4</p>
+            <p><b>Status:</b> <span style="color:red">Sold</span></p>
+            <p style="color:#666;font-size:14px">Premium office space suitable for IT companies and startups.</p>
+            <button style="margin-top:10px;padding:10px;width:100%;border:none;border-radius:10px;background:#000;color:#fff;cursor:pointer">Contact Agent</button>
+          </div>
+
+          <!-- Property Card -->
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914" style="width:100%;border-radius:15px;margin-bottom:15px" />
+            <h3>Studio Apartment</h3>
+            <p><b>Price:</b> $150,000</p>
+            <p><b>Location:</b> Florida</p>
+            <p><b>Property Type:</b> Studio</p>
+            <p><b>Area:</b> 800 sq ft</p>
+            <p><b>Bedrooms:</b> 1 | <b>Bathrooms:</b> 1</p>
+            <p><b>Status:</b> <span style="color:orange">On Rent</span></p>
+            <p style="color:#666;font-size:14px">Affordable studio apartment near beach with modern interiors.</p>
+            <button style="margin-top:10px;padding:10px;width:100%;border:none;border-radius:10px;background:#000;color:#fff;cursor:pointer">Contact Agent</button>
+          </div>
+
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Agent Module -->
+   <section class="box agent-module">
+<div class="agent-profile">
+<div class="agent-properties">
+  <section style="margin-top: 30px;">
+
+      <section class="box" style="margin-top:30px">
+        <h2>Agent Module</h2>
+        <image src="https://i.pravatar.cc/150?img=3" alt="Agent Profile" style="width:120px;height:120px;border-radius:50%;object-fit:cover;margin-bottom:15px" />
+        <h3>Agent Name: John Doe</h3>
+        </section>
+
+        <!-- Agent Registration -->
+        <h3 style="margin-top:15px">Agent Registration</h3>
+        <form style="display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:10px">
+          <input placeholder="Agent Name" required style="padding:10px;border-radius:10px;border:1px solid #ccc" />
+          <input placeholder="Email" type="email" required style="padding:10px;border-radius:10px;border:1px solid #ccc" />
+          <input placeholder="Phone" required style="padding:10px;border-radius:10px;border:1px solid #ccc" />
+          <input placeholder="Experience (years)" required style="padding:10px;border-radius:10px;border:1px solid #ccc" />
+          <textarea placeholder="About Agent" style="grid-column:1/3;padding:10px;border-radius:10px;border:1px solid #ccc"></textarea>
+          <button style="grid-column:1/3;padding:12px;border:none;border-radius:12px;background:#000;color:#fff">Register Agent</button>
+        </form>
+
+        
+  <!-- Booking / Inquiry System -->
+<section class="box booking-module" style="margin-top:30px">
+  <h2>Booking / Inquiry System</h2>
+
+  <!-- Property Inquiry Form -->
+  <h3>Property Inquiry</h3>
+  <form id="inquiryForm" class="booking-form">
+    <input type="text" id="name" placeholder="Your Name" required>
+    <input type="email" id="email" placeholder="Your Email" required>
+    <input type="text" id="phone" placeholder="Phone Number" required>
+
+    <select id="property">
+      <option value="">Select Property</option>
+      <option>Luxury Villa</option>
+      <option>Modern Apartment</option>
+      <option>Family House</option>
+      <option>Commercial Office</option>
+    </select>
+
+    <textarea id="message" placeholder="Your Message"></textarea>
+
+    <button type="submit">Send Inquiry</button>
+  </form>
+
+  <!-- Schedule Visit -->
+  <h3 style="margin-top:25px">Schedule Visit</h3>
+  <form class="booking-form">
+    <input type="date" id="visitDate" required>
+    <input type="time" id="visitTime" required>
+    <button type="button" onclick="scheduleVisit()">Schedule Visit</button>
+  </form>
+
+  <!-- Inquiry Status -->
+  <h3 style="margin-top:25px">Inquiry Status</h3>
+  <div class="status-box">
+    Status: <span id="status" class="pending">Pending</span>
+    <button onclick="approveInquiry()">Approve</button>
+  </div>
+</section>
+
+
+<!-- Payment Module -->
+<section class="box payment-module" style="margin-top:30px">
+  <h2>Payment Module</h2>
+
+  <!-- Booking Token -->
+  <h3>Online Booking Token</h3>
+  <form class="payment-form">
+    <input type="text" placeholder="Property Name" required>
+    <input type="number" placeholder="Token Amount ($)" required>
+    <select>
+      <option>UPI</option>
+      <option>Credit Card</option>
+      <option>Debit Card</option>
+      <option>Net Banking</option>
+    </select>
+    <button type="button" onclick="payToken()">Pay Token</button>
+  </form>
+
+  <!-- Rent / Buy Payment -->
+  <h3 style="margin-top:25px">Rent / Buy Payment</h3>
+  <form class="payment-form">
+    <select id="paymentType">
+      <option>Rent Payment</option>
+      <option>Buy Property</option>
+    </select>
+    <input type="number" placeholder="Amount ($)" required>
+    <select>
+      <option>UPI</option>
+      <option>Card</option>
+      <option>Net Banking</option>
+    </select>
+    <button type="button" onclick="makePayment()">Make Payment</button>
+  </form>
+
+  <!-- Payment History -->
+  <h3 style="margin-top:25px">Payment History</h3>
+  <table class="payment-table">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Amount</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody id="paymentHistory">
+      <tr>
+        <td>12-12-2025</td>
+        <td>Luxury Villa</td>
+        <td>Token</td>
+        <td>$5,000</td>
+        <td class="success">Paid</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Invoice -->
+  <h3 style="margin-top:25px">Invoice / Receipt</h3>
+  <div class="invoice">
+    <p><b>Invoice No:</b> #INV1023</p>
+    <p><b>Customer:</b> John Doe</p>
+    <p><b>Property:</b> Modern Apartment</p>
+    <p><b>Amount Paid:</b> $20,000</p>
+    <p><b>Status:</b> Paid</p>
+    <button onclick="downloadInvoice()">Download Receipt</button>
+  </div>
+</section>
+
+
+<!-- Location & Map Integration -->
+
+<div class="page-wrapper">
+    <section class="box">
+      <h2>Property Location & Map</h2>
+
+      <div class="location-grid">
+
+        <!-- Map -->
+        <div class="map-box">
+          <iframe 
+            src="https://www.google.com/maps?q=Connaught%20Place%20New%20Delhi&output=embed"
+            loading="lazy">
+          </iframe>
+        </div>
+
+        <!-- Details -->
+        <div class="location-details">
+          <h3>Luxury Apartment – New Delhi</h3>
+          <p><b>Address:</b> Connaught Place, New Delhi, India</p>
+
+          <p><b>Nearby Facilities:</b></p>
+
+          <div class="facility">
+            <img src="https://cdn-icons-png.flaticon.com/512/167/167707.png">
+            <span>School – 500m</span>
+          </div>
+
+          <div class="facility">
+            <img src="https://cdn-icons-png.flaticon.com/512/2967/2967350.png">
+            <span>Hospital – 1.2km</span>
+          </div>
+
+          <div class="facility">
+            <img src="https://cdn-icons-png.flaticon.com/512/3075/3075977.png">
+            <span>Shopping Mall – 800m</span>
+          </div>
+
+          <div class="facility">
+            <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png">
+            <span>Metro Station – 400m</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Images -->
+      <h3 style="margin-top:30px">Nearby Area Images</h3>
+      <div class="location-images">
+        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2">
+        <img src="https://images.unsplash.com/photo-1501183638710-841dd1904471">
+        <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994">
+      </div>
+
+    </section>
+  </div>
+
+  
+  <h2>Reviews & Ratings</h2>
+  <section class="box review-section">
+    <h3>Property Reviews</h3>
+    <div class="review-list" id="propertyReviewList">
+      <!-- Reviews will be added here dynamically -->
+  </section>
+
+  <!-- Property Rating -->
+  <div class="rating-box">
+    <h3>Rate This Property</h3>
+    <div class="stars" id="propertyStars">
+      <span data-value="1">★</span>
+      <span data-value="2">★</span>
+      <span data-value="3">★</span>
+      <span data-value="4">★</span>
+      <span data-value="5">★</span>
+    </div>
+    <p id="ratingValue">Rating: 0 / 5</p>
+  </div>
+
+  <!-- Review Form -->
+  <div class="review-form">
+    <h3>Add Your Review</h3>
+    <input type="text" placeholder="Your Name" id="userName">
+    <textarea placeholder="Write your review..." id="userReview"></textarea>
+    <button onclick="addReview()">Submit Review</button>
+  </div>
+
+  <!-- Reviews List -->
+  <div class="review-list" id="reviewList">
+    <h3>User Reviews</h3>
+  </div>
+
+  <!-- Agent Rating -->
+  <div class="agent-rating">
+    <h3>Agent Rating</h3>
+    <div class="stars" id="agentStars">
+      <span data-value="1">★</span>
+      <span data-value="2">★</span>
+      <span data-value="3">★</span>
+      <span data-value="4">★</span>
+      <span data-value="5">★</span>
+    </div>
+    <p id="agentRatingValue">Agent Rating: 0 / 5</p>
+  </div>
+</section>
+</div>
+<!--chat with agent-->
+<section class="chat-with-agent">
+    <h2>Chat with Agent</h2>
+    <a href="tel:+91 7777 7777" class="call-btn">📞 Call Agent</a>
+
+    <div class="chat-box" id="chatBox">
+      <!-- Chat messages will appear here -->
+    </div>
+    <div class="chat-input">
+      <input type="text" id="chatMessage" placeholder="Type your message...">
+      <button onclick="sendMessage()">Send</button>
+      <button class="wishlist-btn">❤️ Add to Wishlist</button>
+      <a href="brochure/property1.pdf" download>
+  Download Brochure (PDF)
+</a>
+
+
+    </div>
+</section>
+
+<!--cms-->
+<!-- About Us -->
+<section class="cms-section" id="about">
+  <h2>About Us</h2>
+
+  <p>
+    DreamHome Real Estate is a trusted and user-friendly platform that helps
+    people buy, sell, and rent properties with complete transparency and ease.
+    We connect property seekers with verified listings and experienced agents
+    to ensure a smooth and secure real estate journey.
+  </p>
+
+  <p>
+    Our mission is to simplify the real estate process by offering reliable
+    property information, smart search tools, and personalized support.
+    Whether you are a first-time buyer, investor, or tenant, we provide
+    solutions tailored to your needs.
+  </p>
+
+  <div class="about-features">
+    <div class="about-box">✔ Verified Properties</div>
+    <div class="about-box">✔ Trusted Agents</div>
+    <div class="about-box">✔ Easy Property Search</div>
+    <div class="about-box">✔ Secure Transactions</div>
+  </div>
+</section>
+
+<!--service-->
+<<!-- Services -->
+<section class="cms-section" id="services">
+<h2>Our Services</h2>
+<div class="service-grid">
+<div class="service-box">Buy Property</div>
+<div class="service-box">Sell Property</div>
+<div class="service-box">Rent Property</div>
+<div class="service-box">Verified Agents</div>
+<div class="service-box">Legal Assistance</div>
+<div class="service-box">Property Valuation</div>
+</div>
+</section>
+
+<!--privacy-->
+<section class="cms-page">
+  <h2>Privacy Policy</h2>
+  <p>
+    We respect your privacy and ensure that your personal information
+    is securely stored and not shared with third parties.
+  </p>
+</section>
+
+<!--terms&condtion-->
+<section class="cms-page">
+  <h2>Terms & Conditions</h2>
+  <p>
+    By accessing this website, you agree to follow all terms and
+    conditions mentioned herein.
+  </p>
+</section>
+
+<!--faq-->
+<section class="cms-section" id="faq">
+<h2>FAQs</h2>
+<div class="faq-item">
+<h4>How can I list my property?</h4>
+<p>Login and go to dashboard to add your property.</p>
+</div>
+<div class="faq-item">
+<h4>Are properties verified?</h4>
+<p>Yes, all properties go through a verification process.</p>
+</div>
+<div class="faq-item">
+<h4>Is registration free?</h4>
+<p>Yes, user registration is completely free.</p>
+</div>
+</section>
+
+<!-- Footer -->
+ <!-- Advanced Footer -->
+<footer class="footer">
+  <div class="footer-container">
+
+    <!-- Company Info -->
+    <div class="footer-box">
+      <h3>DreamHome Real Estate</h3>
+      <p>
+        A trusted real estate platform helping you buy, sell, and rent
+        properties with verified listings and expert guidance.
+      </p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-box">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms & Conditions</a></li>
+        <li><a href="faq.html">FAQs</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="footer-box">
+      <section class="contact">
+    <h2>Contact Us</h2>
+
+    <p><strong>Phone:</strong>
+        <a href="tel:+91 7505651563">+91 7777 7777</a>
+    </p>
+
+    <p><strong>WhatsApp:</strong>
+        <a href="https://wa.me/7777 7777" target="_blank">
+            Chat on WhatsApp
+        </a>
+    </p>
+
+    <p><strong>Email:</strong>
+        <a href="mailto:info@propertyfinder.com">
+            info@propertyfinder.com
+        </a>
+    </p>
+</section>
+
+
+    <!-- Newsletter -->
+    <div class="footer-box">
+      <h3>Newsletter</h3>
+      <p>Subscribe to get latest property updates.</p>
+      <form class="footer-form">
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit">Subscribe</button>
+      </form>
+
+      <div class="social-icons">
+        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom Footer -->
+  <div class="footer-bottom">
+    <p>© 2025 DreamHome Real Estate | All Rights Reserved</p>
+  </div>
+</footer>
+
+
+
+
+
+
+    <!-- JS File -->
+    <script src="script.js"></script>
+
+    
+</body>
+</html>
